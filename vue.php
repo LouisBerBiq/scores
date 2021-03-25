@@ -108,25 +108,11 @@
             </tr>
         </thead>
         <tbody>
-
-            <tr>
-                <td>January 7th, 2020</td><td>Liverpool</td><td>7</td><td>2</td><td>Manchester United</td>
-            </tr>
-            <tr>
-                <td>January 7th, 2020</td><td>Liverpool</td><td>7</td><td>2</td><td>Manchester United</td>
-            </tr>
-            <tr>
-                <td>January 7th, 2020</td><td>Liverpool</td><td>7</td><td>2</td><td>Manchester United</td>
-            </tr>
-            <tr>
-                <td>January 7th, 2020</td><td>Liverpool</td><td>7</td><td>2</td><td>Manchester United</td>
-            </tr>
-            <tr>
-                <td>January 7th, 2020</td><td>Liverpool</td><td>7</td><td>2</td><td>Manchester United</td>
-            </tr>
-            <tr>
-                <td>January 7th, 2020</td><td>Liverpool</td><td>7</td><td>2</td><td>Manchester United</td>
-            </tr>
+			<?php foreach($matches as $match): ?>
+				<tr>
+					<td><?php $match['match-data'] ?></td><td><?php $match['home-team'] ?></td><td><?php $match['home-team-goals'] ?></td><td><?php $match['waway-team-goals'] ?></td><td><?php $match['away-team'] ?></td>
+				</tr>
+			<?php endforeach; ?>
         </tbody>
     </table>
 </section>
