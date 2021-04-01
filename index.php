@@ -1,6 +1,7 @@
 <?php
 
 define('MATCHES_FILE_PATH', './matches.csv');
+define('MATCH_DATE', (new DateTime('now', new DateTimeZone('Europe/Brussels')))->format('F jS, Y'));
 
 // final arrays
 $matches = [];
@@ -35,6 +36,6 @@ while($tableLine = fgetcsv($matchesHandle, 1000, ',')) {
 		$standing[$awayTeam] = initEmptyStatsArray();
 	}
 };
-var_dump($matches); exit();
+var_dump( $standing); exit();
 
 include('./vue.php'); 
