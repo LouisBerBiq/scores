@@ -74,7 +74,7 @@
 		<h2>Encodage d’un nouveau match</h2>
 		<form action="manage.php" method="post">
 			<label for="match-date">Date du match</label>
-			<input type="text" id="match-date" name="match-date">
+			<input type="text" id="match-date" name="match-date" placeholder="2020-04-27">
 			<br>
 			<label for="home-team">Équipe à domicile</label>
 			<select name="home-team" id="home-team">
@@ -100,6 +100,8 @@
 			<label for="away-team-goals">Goals de l’équipe visiteuse</label>
 			<input type="text" id="away-team-goals" name="away-team-goals">
 			<br>
+			<input type="hidden" name="action" value="store">
+			<input type="hidden" name="resource" value="match">
 			<input type="submit" value="Ajouter ce match">
 		</form>
 	</section>
