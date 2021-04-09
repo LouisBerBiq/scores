@@ -47,13 +47,13 @@ while ($tableLine = fgetcsv($matchesHandle, 1000, ',')) {
 		$standing[$homeTeam]['draws']++;
 		$standing[$awayTeam]['draws']++;
 
-	// home wins //
+		// home wins //
 	} elseif ($match['home-team-goals'] > $match['away-team-goals']) {
 		$standing[$homeTeam]['score'] += 3;
 		$standing[$homeTeam]['wins']++;
 		$standing[$awayTeam]['losses']++;
 
-	// home losses //
+		// home losses //
 	} else {
 		$standing[$awayTeam]['score'] += 3;
 		$standing[$awayTeam]['wins']++;
@@ -70,12 +70,13 @@ while ($tableLine = fgetcsv($matchesHandle, 1000, ',')) {
 };
 
 uasort($standing, function ($a, $b) {
-	if ($a['points'] === $b['points']) {
+	if ($a['score'] === $b['score']) {
 		return 0;
 	};
-	return $a['points'] > $b['points'] ? -1 : 1;
+	return $a['score'] > $b['score'] ? -1 : 1;
 });
 
 $teams = array_keys($standing);
+sort($teams);
 
 include('./vue.php');
