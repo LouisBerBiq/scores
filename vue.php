@@ -78,12 +78,9 @@
 			<br>
 			<label for="home-team">Équipe à domicile</label>
 			<select name="home-team" id="home-team">
-				<option value="arsenal">Arsenal</option>
-				<option value="chelsea">Chelsea</option>
-				<option value="liverpool">Liverpool</option>
-				<option value="manchester%20city">Manchester City</option>
-				<option value="manchester%20united">Manchester United</option>
-				<option value="tottenham">Tottenham</option>
+				<?php foreach($teams as $team): ?>
+					<option value=$team><?= $team ?></option>
+				<?php endforeach; ?>
 			</select>
 			<label for="home-team-unlisted">Équipe non listée&nbsp;?</label>
 			<input type="text" name="home-team-unlisted" id="home-team-unlisted">
@@ -93,12 +90,9 @@
 			<br>
 			<label for="away-team">Équipe visiteuse</label>
 			<select name="away-team" id="away-team">
-				<option value="arsenal">Arsenal</option>
-				<option value="chelsea">Chelsea</option>
-				<option value="liverpool">Liverpool</option>
-				<option value="manchester%20city">Manchester City</option>
-				<option value="manchester%20united">Manchester United</option>
-				<option value="tottenham">Tottenham</option>
+				<?php foreach($teams as $team): ?>
+					<option value=$team><?= $team ?></option>
+				<?php endforeach; ?>
 			</select>
 			<label for="away-team-unlisted">Équipe non listée&nbsp;?</label>
 			<input type="text" name="away-team-unlisted" id="away-team-unlisted">
