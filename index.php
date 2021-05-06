@@ -1,20 +1,25 @@
 <?php
+
 require('./configs/config.php');
 require('./configs/dbconnection.php');
 
 require('./models/team.php');
+require('./models/match.php');
+
+use function Match\all as allMatches;
+use function Team\all as allTeams;
 
 define('MATCHES_FILE_PATH', './matches.csv'); //for compatibility reasons
 define('MATCH_DATE', (new DateTime('now', new DateTimeZone('Europe/Brussels')))->format('F jS, Y'));
 
 // final arrays
-$matches = [];
+// $matches = [];
 $standing = [];
 // $teams = [];
 
 $connection = getConnection();
 $teams = allTeams($connection);
-var_dump($teams); exit();
+$matches = allMatches($connection);
 
 function initEmptyStatsArray()
 {
