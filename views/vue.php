@@ -27,7 +27,6 @@
 			</thead>
 			<tbody>
 			<?php $i = 1 ?>
-				<!-- need precisions for that one -->
 			<?php foreach($standing as $team => $teamStats): ?>
 				<tr>
 					<td><?php $i++ ?></td>
