@@ -1,6 +1,8 @@
 <?php
 namespace Match;
 
+use \stdClass;
+
 function all(\PDO $connection):array {
 	$matchRequest = 'SELECT * FROM `matches` ORDER BY date ASC';
 	$pdoSt = $connection->query($matchRequest);
