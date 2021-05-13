@@ -1,6 +1,7 @@
 /.idea
 /.vscode
 tools/
+test.php
 
 /data/mysql/*
 !/data/mysql/scores
