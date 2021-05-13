@@ -15,7 +15,7 @@ function find(\PDO $connection, string $id):\stdClass {
 }
 
 function allWithTeams(\PDO $connection):array {
-	$matchesInfosRequest = 'SELECT * FROM `matches` JOIN `events` e  ON matches.id = e.match_id JOIN teams t ON e.team_id = t.id ORDER BY matches.id;';
+	$matchesInfosRequest = 'SELECT * FROM matches JOIN `events` e ON matches.id = e.match_id JOIN teams t ON t.id = e.team_id ORDER BY matches.id;';
 	$pdoSt = $connection->query($matchesInfosRequest);
 	return $pdoSt->fetchAll();
 }
