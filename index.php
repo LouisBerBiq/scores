@@ -15,7 +15,15 @@ define('MATCH_DATE', (new DateTime('now', new DateTimeZone('Europe/Brussels')))-
 
 $connection = getConnection();
 $teams = allTeams($connection);
+$temp = allMatchesWithTeams($connection);
+var_dump($temp); exit();
+// foreach($temp as $t) {
+// 	var_dump($t->id);
+// }
+exit();
 $matches = allWithTeamsGrouped(allMatchesWithTeams($connection));
+
+var_dump($matches); exit();
 
 function initEmptyStatsArray()
 {
