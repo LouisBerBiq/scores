@@ -1,5 +1,4 @@
 <?php
-
 require('./configs/config.php');
 require('./configs/dbconnection.php');
 
@@ -15,15 +14,15 @@ define('MATCH_DATE', (new DateTime('now', new DateTimeZone('Europe/Brussels')))-
 
 $connection = getConnection();
 $teams = allTeams($connection);
-$temp = allMatchesWithTeams($connection);
-var_dump($temp); exit();
+// $temp = allMatchesWithTeams($connection);
+// var_dump($temp); exit();
 // foreach($temp as $t) {
 // 	var_dump($t->id);
 // }
-exit();
-$matches = allWithTeamsGrouped(allMatchesWithTeams($connection));
+// exit();
 
-var_dump($matches); exit();
+$matches = allWithTeamsGrouped(allMatchesWithTeams($connection));
+// var_dump($matches); exit();
 
 function initEmptyStatsArray()
 {
@@ -39,58 +38,54 @@ function initEmptyStatsArray()
 	];
 };
 
-// $matchesHandle = fopen(MATCHES_FILE_PATH, 'r');
-// $tableHeaders = fgetcsv($matchesHandle, 1000, ',');
+foreach ($matches as $match){
+	$homeTeam = $match->home_team;
+	$awayTeam = $match->away_team;
 
-// while ($tableLine = fgetcsv($matchesHandle, 1000, ',')) {
-// 	$match = array_combine($tableHeaders, $tableLine); // ceci est le match courant
-// 	$matches[] = $match;
-// 	$homeTeam = $match['home-team'];
-// 	$awayTeam = $match['away-team'];
-// 	if (!array_key_exists($homeTeam, $standing)) {
-// 		$standing[$homeTeam] = initEmptyStatsArray(); // create index $hometeam and fill it this array
-// 	};
-// 	if (!array_key_exists($awayTeam, $standing)) {
-// 		$standing[$awayTeam] = initEmptyStatsArray();
-// 	};
-// 	$standing[$homeTeam]['games']++;
-// 	$standing[$awayTeam]['games']++;
+	if (!array_key_exists($homeTeam, $standing)) {
+		$standing[$homeTeam] = initEmptyStatsArray(); // create index $hometeam and fill it this array
+	};
+	if (!array_key_exists($awayTeam, $standing)) {
+		$standing[$awayTeam] = initEmptyStatsArray();
+	};
+	$standing[$homeTeam]['games']++;
+	$standing[$awayTeam]['games']++;
 
-// 	// draws //
-// 	if ($match['home-team-goals'] === $match['away-team-goals']) {
-// 		$standing[$homeTeam]['score']++;
-// 		$standing[$awayTeam]['score']++;
-// 		$standing[$homeTeam]['draws']++;
-// 		$standing[$awayTeam]['draws']++;
+	// draws //
+	if ($match->home_team_goals === $match->away_team_goals) {
+		$standing[$homeTeam]['score']++;
+		$standing[$awayTeam]['score']++;
+		$standing[$homeTeam]['draws']++;
+		$standing[$awayTeam]['draws']++;
 
-// 		// home wins //
-// 	} elseif ($match['home-team-goals'] > $match['away-team-goals']) {
-// 		$standing[$homeTeam]['score'] += 3;
-// 		$standing[$homeTeam]['wins']++;
-// 		$standing[$awayTeam]['losses']++;
+		// home wins //
+	} elseif ($match->home_team_goals > $match->away_team_goals) {
+		$standing[$homeTeam]['score'] += 3;
+		$standing[$homeTeam]['wins']++;
+		$standing[$awayTeam]['losses']++;
 
-// 		// home losses //
-// 	} else {
-// 		$standing[$awayTeam]['score'] += 3;
-// 		$standing[$awayTeam]['wins']++;
-// 		$standing[$homeTeam]['losses']++;
-// 	};
+		// home losses //
+	} else {
+		$standing[$awayTeam]['score'] += 3;
+		$standing[$awayTeam]['wins']++;
+		$standing[$homeTeam]['losses']++;
+	};
 
-// 	// goals comparisons //
-// 	$standing[$homeTeam]['GF'] += $match['home-team-goals'];
-// 	$standing[$awayTeam]['GF'] += $match['away-team-goals'];
-// 	$standing[$homeTeam]['GA'] += $match['away-team-goals'];
-// 	$standing[$awayTeam]['GA'] += $match['home-team-goals'];
-// 	$standing[$homeTeam]['GD'] = $standing[$homeTeam]['GF'] - $standing[$homeTeam]['GA'];
-// 	$standing[$awayTeam]['GD'] = $standing[$awayTeam]['GF'] - $standing[$awayTeam]['GA'];
-// };
+	// goals comparisons //
+	$standing[$homeTeam]['GF'] += $match->home_team_goals;
+	$standing[$awayTeam]['GF'] += $match->away_team_goals;
+	$standing[$homeTeam]['GA'] += $match->away_team_goals;
+	$standing[$awayTeam]['GA'] += $match->home_team_goals;
+	$standing[$homeTeam]['GD'] = $standing[$homeTeam]['GF'] - $standing[$homeTeam]['GA'];
+	$standing[$awayTeam]['GD'] = $standing[$awayTeam]['GF'] - $standing[$awayTeam]['GA'];
+}
 
-// uasort($standing, function ($a, $b) {
-// 	if ($a['score'] === $b['score']) {
-// 		return 0;
-// 	};
-// 	return $a['score'] > $b['score'] ? -1 : 1;
-// });
+uasort($standing, function ($a, $b) {
+	if ($a['score'] === $b['score']) {
+		return 0;
+	};
+	return $a['score'] > $b['score'] ? -1 : 1;
+});
 
 $teams = array_keys($standing);
 sort($teams);
