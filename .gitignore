@@ -2,6 +2,7 @@
 /.vscode
 tools/
 test.php
+vue.html
 
 /data/mysql/*
 !/data/mysql/scores
