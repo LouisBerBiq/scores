@@ -33,11 +33,12 @@ function allWithTeamsGrouped(array $allWithTeams):array {
 			$mm->home_team_goals = $match->goals;
 		} else {
 			// listen, I know this is technically not working in the grand scheme of thing but can you just shut the fuck up? There is NO possible scenario where this can break other than the guy encoding everything fucking up the order.
+			
 			$mm->away_team = $match->name;
 			$mm->away_team_goals = $match->goals;
 		}
 		$matchesWithTeams[] = $mm;
-		var_dump($matchesWithTeams); exit();
+		// var_dump($matchesWithTeams); exit();
 	}
 	return $matchesWithTeams;
 }
