@@ -16,6 +16,7 @@ $connection = getConnection();
 $teams = allTeams($connection);
 $matches = allWithTeamsGrouped(allMatchesWithTeams($connection));
 
+$standing = [];
 function initEmptyStatsArray()
 {
 	return [
