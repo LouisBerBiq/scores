@@ -15,7 +15,7 @@ function find(\PDO $connection, string $id):\stdClass {
 }
 
 function allWithTeams(\PDO $connection):array {
-	$matchesInfosRequest = 'SELECT * FROM matches JOIN `events` e ON matches.id = e.match_id JOIN teams t ON t.id = e.team_id ORDER BY matches.id;';
+	$matchesInfosRequest = 'SELECT * FROM matches JOIN events e on matches.id = e.match_id JOIN teams t on e.team_id = t.id ORDER BY matches.id, is_home_team DESC';
 	$pdoSt = $connection->query($matchesInfosRequest);
 	return $pdoSt->fetchAll();
 }
@@ -33,9 +33,8 @@ function allWithTeamsGrouped(array $allWithTeams):array {
 			// listen, I know this is technically not working in the grand scheme of thing but can you just shut the fuck up? There is NO possible scenario where this can break other than the guy encoding everything fucking up the order.
 			$mm->away_team = $match->name;
 			$mm->away_team_goals = $match->goals;
+			$matchesWithTeams[] = $mm;
 		}
-		$matchesWithTeams[] = $mm;
-		// var_dump($matchesWithTeams); exit();
 	}
 	return $matchesWithTeams;
 }
