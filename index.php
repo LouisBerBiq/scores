@@ -1,6 +1,8 @@
 <?php
-require('./configs/config.php');
 require('./configs/dbconnection.php');
+require('./configs/config.php');
+
+require('./utils/standings.php');
 
 require('./models/team.php');
 require('./models/match.php');
