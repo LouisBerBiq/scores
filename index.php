@@ -10,8 +10,6 @@ use function Match\allWithTeams as allMatchesWithTeams;
 use function Match\allWithTeamsGrouped as allWithTeamsGrouped;
 use function Team\all as allTeams;
 
-define('MATCH_DATE', (new DateTime('now', new DateTimeZone('Europe/Brussels')))->format('F jS, Y'));
-
 $connection = getConnection();
 $teams = allTeams($connection);
 $matches = allWithTeamsGrouped(allMatchesWithTeams($connection));
