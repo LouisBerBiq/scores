@@ -71,18 +71,18 @@
 	</section>
 	<section>
 		<h2>Encodage d’un nouveau match</h2>
-		<form action="manage.php" method="post">
+		<form action="index.php" method="post">
 			<label for="match-date">Date du match</label>
 			<input type="text" id="match-date" name="match-date" placeholder="2020-04-27">
 			<br>
 			<label for="home-team">Équipe à domicile</label>
 			<select name="home-team" id="home-team">
 				<?php foreach($teams as $team): ?>
-					<option value=$team><?= $team->name ?></option>
+					<option value=<?= $team->name?>><?= $team->name ?></option>
 				<?php endforeach; ?>
 			</select>
-			<label for="home-team-unlisted">Équipe non listée&nbsp;?</label>
-			<input type="text" name="home-team-unlisted" id="home-team-unlisted">
+			<!-- <label for="home-team-unlisted">Équipe non listée&nbsp;?</label>
+			<input type="text" name="home-team-unlisted" id="home-team-unlisted"> -->
 			<br>
 			<label for="home-team-goals">Goals de l’équipe à domicile</label>
 			<input type="text" id="home-team-goals" name="home-team-goals">
@@ -90,11 +90,11 @@
 			<label for="away-team">Équipe visiteuse</label>
 			<select name="away-team" id="away-team">
 				<?php foreach($teams as $team): ?>
-					<option value=$team><?= $team ?></option>
+					<option value=<?= $team->name?>><?= $team->name ?></option>
 				<?php endforeach; ?>
 			</select>
-			<label for="away-team-unlisted">Équipe non listée&nbsp;?</label>
-			<input type="text" name="away-team-unlisted" id="away-team-unlisted">
+			<!-- <label for="away-team-unlisted">Équipe non listée&nbsp;?</label>
+			<input type="text" name="away-team-unlisted" id="away-team-unlisted"> -->
 			<br>
 			<label for="away-team-goals">Goals de l’équipe visiteuse</label>
 			<input type="text" id="away-team-goals" name="away-team-goals">
