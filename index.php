@@ -17,6 +17,18 @@ $teams = allTeams($connection);
 $matches = allWithTeamsGrouped(allMatchesWithTeams($connection));
 
 
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST'){
+	if (isset($_POST['action']) && isset($_POST['resource'])) {
+		if ($_POST['action'] === 'store' && $_POST['resource'] === 'match') {
+			$homeTeam = $_POST['home-team-unlisted'] === '' ? $_POST['home-team'] :$_POST['home-team-unlisted'];
+			$awayTeam = $_POST['away-team-unlisted'] === '' ? $_POST['away-team'] : $_POST['away-team-unlisted'];
+	
+			$match = [$_POST['match-date'], $homeTeam , $_POST['home-team-goals'], $_POST['away-team-goals'], $awayTeam];
+			//append to DB
+		}
+	};
+} elseif ($_SERVER['REQUEST_METHOD'] === 'GET'){
 $standing = [];
 foreach ($matches as $match){
 	$homeTeam = $match->home_team;
