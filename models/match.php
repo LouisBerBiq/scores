@@ -1,30 +1,35 @@
 <?php
+
 namespace Match;
 
-function all(\PDO $connection):array {
+function all(\PDO $connection): array
+{
 	$matchRequest = 'SELECT * FROM `matches` ORDER BY date ASC';
 	$pdoSt = $connection->query($matchRequest);
 	return $pdoSt->fetchAll();
 }
 
-function find(\PDO $connection, string $id):\stdClass {
+function find(\PDO $connection, string $id): \stdClass
+{
 	$matchRequest = 'SELECT * FROM `matches` WHERE id = :id';
 	$pdoSt = $connection->prepare($matchRequest);
 	$pdoSt->execute([':id' => $id]);
 	return $pdoSt->fetch();
 }
 
-function allWithTeams(\PDO $connection):array {
+function allWithTeams(\PDO $connection): array
+{
 	$matchesInfosRequest = 'SELECT * FROM matches JOIN events e on matches.id = e.match_id JOIN teams t on e.team_id = t.id ORDER BY matches.id, is_home_team DESC';
 	$pdoSt = $connection->query($matchesInfosRequest);
 	return $pdoSt->fetchAll();
 }
 
-function allWithTeamsGrouped(array $allWithTeams):array {
+function allWithTeamsGrouped(array $allWithTeams): array
+{
 	$matchesWithTeams = [];
 	$mm = null;
 	foreach ($allWithTeams as $match) {
-		if($match->is_home_team) {
+		if ($match->is_home_team) {
 			$mm = new \stdClass();
 			$mm->match_date = $match->date;
 			$mm->home_team = $match->name;
@@ -39,7 +44,7 @@ function allWithTeamsGrouped(array $allWithTeams):array {
 	return $matchesWithTeams;
 }
 
-function saveToDb(\PDO $connection, array $match):bool
+function saveToDb(\PDO $connection, array $match): bool
 {
 	$matchRequestToInsert = 'INSERT INTO matches(`date`, `slug`) VALUES (:date, :slug)';
 	$pdoSt = $connection->prepare($matchRequestToInsert);
