@@ -91,3 +91,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
 }
 
 include('./views/vue.php');
+
+/*
+* manually writing validation branches is "deprecated" in this day and ages,
+* frameworks like Laravel and such leverage this important process.
+*/
