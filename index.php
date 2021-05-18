@@ -11,6 +11,8 @@ use function Match\all as allMatches;
 use function Match\allWithTeams as allMatchesWithTeams;
 use function Match\allWithTeamsGrouped as allWithTeamsGrouped;
 use function Team\all as allTeams;
+use function Team\findById as findTeamById;
+use function Team\findByName as findTeamByName;
 
 $connection = getConnection();
 $teams = allTeams($connection);
