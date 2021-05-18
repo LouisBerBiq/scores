@@ -10,6 +10,7 @@ require('./models/match.php');
 use function Match\all as allMatches;
 use function Match\allWithTeams as allMatchesWithTeams;
 use function Match\allWithTeamsGrouped as allWithTeamsGrouped;
+use function Match\saveToDb as saveMatchToDb;
 use function Team\all as allTeams;
 use function Team\findById as findTeamById;
 use function Team\findByName as findTeamByName;
@@ -41,6 +42,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
 				'away-team-goals'=>$awayTeam,
 				'away-team'=>$awayTeamGoals
 			];
+			if (saveMatchToDb($connection, $match)){
+				exit('works');
+			} else{
+				exit('didnt work');
+			};
 		}
 	};
 } elseif ($_SERVER['REQUEST_METHOD'] === 'GET'){
