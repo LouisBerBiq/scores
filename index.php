@@ -17,6 +17,12 @@ $teams = allTeams($connection);
 $matches = allWithTeamsGrouped(allMatchesWithTeams($connection));
 
 
+/*
+* A REQUEST IS:
+* - a method
+* - an action (append, delete)
+* - resources (team, match)
+*/
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST'){
 	if (isset($_POST['action']) && isset($_POST['resource'])) {
