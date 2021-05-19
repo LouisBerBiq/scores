@@ -8,6 +8,7 @@
 
 <body>
 	<h1>Premier League 2020</h1>
+	<?php if($standing): ?>
 	<section>
 		<h2>Standings</h2>
 		<table>
@@ -44,6 +45,8 @@
 			</tbody>
 		</table>
 	</section>
+	<?php endif; ?>
+	<?php if($matches): ?>
 	<section>
 		<h2>Games played as of <?= MATCH_DATE ?></h2>
 		<table>
@@ -69,6 +72,9 @@
 			</tbody>
 		</table>
 	</section>
+	<?php else: ?>
+		<p>There's nothing to display yet.</p>
+	<?php endif; ?>
 	<section>
 		<h2>Encodage d’un nouveau match</h2>
 		<form action="index.php" method="post">
