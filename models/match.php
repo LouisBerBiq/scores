@@ -48,5 +48,22 @@ function saveToDb(\PDO $connection, array $match): bool
 {
 	$matchRequestToInsert = 'INSERT INTO matches(`date`, `slug`) VALUES (:date, :slug)';
 	$pdoSt = $connection->prepare($matchRequestToInsert);
-	return $pdoSt->execute([':date' => $match['date'], ':slug' => '']);
+	$pdoSt->execute([':date' => $match['date'], ':slug' => '']);
+
+	$id = $connection->lastInsertId();
+	$eventRequestToInsert = 'INSERT INTO events(`match_id`, `team_id`, `goals`, `is_home_team`) VALUES (:match_id, :team_id, :goals, :is_home_team)';
+	$pdoSt = $connection->prepare($eventRequestToInsert);
+	$pdoSt->execute([
+		':match_id' => $id,
+		':team_id' => $match['home-team'],
+		':goals' => $match['home-team-goals'],
+		':is_home_team' => 1
+	]);
+	$pdoSt = $connection->prepare($eventRequestToInsert);
+	$pdoSt->execute([
+		':match_id' => $id,
+		':team_id' => $match['away-team'],
+		':goals' => $match['away-team-goals'],
+		':is_home_team' => 0
+	]);
 }
