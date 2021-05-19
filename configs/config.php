@@ -1,3 +1,6 @@
 <?php
+
+use Carbon\Carbon;
+
 define('SERVER_NAME', 'localhost');
-define('MATCH_DATE', (new DateTime('now', new DateTimeZone('Europe/Brussels')))->format('F jS, Y'));
+define('MATCH_DATE', Carbon::now('Europe/Brussels')->locale('fr_BE')->isoFormat('dddd MMMM YYYY'));
