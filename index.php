@@ -42,11 +42,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 				'away-team-goals' => $awayTeam->id,
 				'away-team' => $awayTeamGoals
 			];
-			if (saveMatchToDb($connection, $match)) {
-				exit('works');
-			} else {
-				exit('didnt work');
-			};
+			saveMatchToDb($connection, $match);
+			header('location: ./index.php');
+			exit();
 		}
 	};
 } elseif ($_SERVER['REQUEST_METHOD'] === 'GET') {

@@ -44,7 +44,7 @@ function allWithTeamsGrouped(array $allWithTeams): array
 	return $matchesWithTeams;
 }
 
-function saveToDb(\PDO $connection, array $match): bool
+function saveToDb(\PDO $connection, array $match)
 {
 	$matchRequestToInsert = 'INSERT INTO matches(`date`, `slug`) VALUES (:date, :slug)';
 	$pdoSt = $connection->prepare($matchRequestToInsert);
