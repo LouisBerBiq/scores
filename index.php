@@ -6,13 +6,13 @@ require('./utils/standings.php');
 require('./models/team.php');
 require('./models/match.php');
 
-use function Match\all as allMatches;
-use function Match\allWithTeams as allMatchesWithTeams;
-use function Match\allWithTeamsGrouped as allWithTeamsGrouped;
-use function Match\saveToDb as saveMatchToDb;
-use function Team\all as allTeams;
-use function Team\findById as findTeamById;
-use function Team\findByName as findTeamByName;
+use function Models\Match\all as allMatches;
+use function Models\Match\allWithTeams as allMatchesWithTeams;
+use function Models\Match\allWithTeamsGrouped as allWithTeamsGrouped;
+use function Models\Match\saveToDb as saveMatchToDb;
+use function Models\Team\all as allTeams;
+use function Models\Team\findById as findTeamById;
+use function Models\Team\findByName as findTeamByName;
 
 $connection = getConnection();
 $teams = allTeams($connection);
