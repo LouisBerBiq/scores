@@ -1,0 +1,13 @@
+{
+    "name": "louis/scores",
+    "type": "project",
+    "require": {
+        "nesbot/carbon": "^2.48"
+    },
+    "authors": [
+        {
+            "name": "LouisBerBiq",
+            "email": "louis.beriotbiquet@student.hepl.be"
+        }
+    ]
+}
