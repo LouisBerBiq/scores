@@ -9,13 +9,6 @@ require('./controllers/match.php');
 require('./controllers/team.php');
 require('./controllers/page.php');
 
-use function Models\Match\all as allMatches;
-use function Models\Match\allWithTeams as allMatchesWithTeams;
-use function Models\Match\allWithTeamsGrouped as allWithTeamsGrouped;
-use function Models\Match\saveToDb as saveMatchToDb;
-use function Models\Team\all as allTeams;
-use function Models\Team\findById as findTeamById;
-use function Models\Team\findByName as findTeamByName;
 use function Controllers\Match\store as storeMatch;
 use function Controllers\Team\store as storeTeam;
 use function Controllers\Page\dashboard as dashboard;
