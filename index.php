@@ -45,6 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 extract($boardData, EXTR_OVERWRITE);
+include($view);
 
 /*
 * manually writing validation branches is "deprecated" in this day and ages,
