@@ -7,6 +7,7 @@ require('./models/team.php');
 require('./models/match.php');
 require('./controllers/match.php');
 require('./controllers/team.php');
+require('./controllers/page.php');
 
 use function Models\Match\all as allMatches;
 use function Models\Match\allWithTeams as allMatchesWithTeams;
@@ -17,10 +18,7 @@ use function Models\Team\findById as findTeamById;
 use function Models\Team\findByName as findTeamByName;
 use function Controllers\Match\store as storeMatch;
 use function Controllers\Team\store as storeTeam;
-
-$connection = getConnection();
-$teams = allTeams($connection);
-$matches = allWithTeamsGrouped(allMatchesWithTeams($connection));
+use function Controllers\Page\dashboard as dashboard;
 
 /*
 * A REQUEST IS:
@@ -46,7 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	exit();
 }
 
-include('./views/vue.php');
+extract($boardData, EXTR_OVERWRITE);
 
 /*
 * manually writing validation branches is "deprecated" in this day and ages,
