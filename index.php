@@ -37,9 +37,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 			$match = [
 				'date' => $_POST['match-date'],
-				'home-team' => $homeTeam,
+				'home-team' => $homeTeam->id,
 				'home-team-goals' => $homeTeamGoals,
-				'away-team-goals' => $awayTeam,
+				'away-team-goals' => $awayTeam->id,
 				'away-team' => $awayTeamGoals
 			];
 			if (saveMatchToDb($connection, $match)) {
