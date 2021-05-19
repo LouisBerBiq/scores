@@ -45,7 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 			$awayTeam = $match->away_team;
 
 			if (!array_key_exists($homeTeam, $standing)) {
-				$standing[$homeTeam] = initEmptyStatsArray(); // create index $hometeam and fill it this array
+				$standing[$homeTeam] = initEmptyStatsArray();
 			};
 			if (!array_key_exists($awayTeam, $standing)) {
 				$standing[$awayTeam] = initEmptyStatsArray();
