@@ -6,4 +6,4 @@ define('MATCH_DATE', Carbon::now('Europe/Brussels')->locale('fr_BE')->isoFormat(
 
 $connection = getConnection();
 $boardData = [];
-$view = './views/vue.php';
+$view = './views/defaultView.php';

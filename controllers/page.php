@@ -10,6 +10,7 @@ function dashboard(\PDO $connection)
 	$matches = allWithTeamsGrouped(allMatchesWithTeams($connection));
 	$teams =  allTeams($connection);
 	$standing = [];
+	$view = './views/vue.php';
 
 	foreach ($matches as $match) {
 		$homeTeam = $match->home_team;
@@ -59,5 +60,5 @@ function dashboard(\PDO $connection)
 		return $a['score'] > $b['score'] ? -1 : 1;
 	});
 
-	return compact('matches', 'teams', 'standing');
+	return compact('matches', 'teams', 'standing', 'view');
 }
