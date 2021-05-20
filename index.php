@@ -1,6 +1,5 @@
 <?php
 require('./vendor/autoload.php');
-require('./configs/dbconnection.php');
 require('./configs/config.php');
 require('./utils/standings.php');
 

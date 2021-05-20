@@ -1,4 +1,6 @@
 <?php
+require('./configs/dbconnection.php');
+
 use Carbon\Carbon;
 
 define('SERVER_NAME', 'localhost');
