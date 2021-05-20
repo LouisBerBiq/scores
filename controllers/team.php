@@ -12,7 +12,6 @@ function store(\PDO $connection)
 	$slug = $_POST['team-slug'];
 
 	$team = compact('name', 'slug');
-	// var_dump($team); exit();
 
 	saveTeamToDb($connection, $team);
 	header('location: ./index.php');
