@@ -17,3 +17,9 @@ function store(\PDO $connection)
 	header('location: ./index.php');
 	exit();
 }
+
+function create()
+{
+	$view = './views/team/view.php';
+	return compact('view');
+}
