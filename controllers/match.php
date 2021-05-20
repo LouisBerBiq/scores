@@ -1,6 +1,9 @@
 <?php
 namespace Controllers\Match;
 
+require('./models/match.php');
+require('./models/team.php');
+
 use function Models\Team\findByName as findTeamByName;
 use function Models\Match\saveToDb as saveMatchToDb;
 

@@ -1,6 +1,8 @@
 <?php
 namespace Controllers\Team;
 
+// require('./models/team.php'); uh?
+
 use function Models\Team\saveToDb as saveTeamToDb;
 
 function store(\PDO $connection)

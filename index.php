@@ -3,17 +3,14 @@ require('./vendor/autoload.php');
 require('./configs/dbconnection.php');
 require('./configs/config.php');
 require('./utils/standings.php');
-require('./models/team.php');
-require('./models/match.php');
-require('./controllers/match.php');
-require('./controllers/team.php');
-require('./controllers/page.php');
 
-$route = require('./utils/router.php');
 if (!$route) {
 	header('location: ./index.php');
 	exit();
 }
+$route = require('./utils/router.php');
+require('./controllers/'.$route['controller'].'.php');
+
 $data = call_user_func($route['callback'], $connection);
 extract($data, EXTR_OVERWRITE);
 include($view);
