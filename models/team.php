@@ -1,5 +1,4 @@
 <?php
-
 namespace Models\Team;
 
 function all(\PDO $connection): array

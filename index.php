@@ -9,7 +9,7 @@ if (!$route) {
 	exit();
 }
 $route = require('./utils/router.php');
-require('./controllers/'.$route['controller'].'.php');
+require('./controllers/' . $route['controller'] . '.php');
 
 $data = call_user_func($route['callback'], $connection);
 extract($data, EXTR_OVERWRITE);
