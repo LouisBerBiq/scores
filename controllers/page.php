@@ -13,7 +13,7 @@ function dashboard(\PDO $connection)
 	$matches = allWithTeamsGrouped(allMatchesWithTeams($connection));
 	$teams =  allTeams($connection);
 	$standing = [];
-	$view = './views/vue.php';
+	$view = './views/dashboard.php';
 
 	foreach ($matches as $match) {
 		$homeTeam = $match->home_team;
