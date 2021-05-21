@@ -15,15 +15,22 @@
 	<form action="index.php" method="POST">
 	<div>
 		<label for="name">New team name</label>
-		<input type="text" id="name" name="team-name" required></input>
+		<input type="text" id="name" name="team-name" value="<?= !empty($_SESSION['old'])?$_SESSION['old']['team-name']:'' ?>"></input>
 	</div>
 	<div>
 		<label for="slug">New team slug (3 chars)</label>
-		<input type="text" id="slug" name="team-slug"></input>
+		<input type="text" id="slug" name="team-slug" value="<?= !empty($_SESSION['old'])?$_SESSION['old']['team-slug']:''?>"></input>
 	</div>
 		<input type="hidden" name="action" value="store"></input>
 		<input type="hidden" name="resource" value="team"></input>
 		<input type="submit" value="Register a new team"></input>
 	</form>
+	<?php if($_SESSION['errors']): ?>
+		<?php foreach($_SESSION['errors'] as $error): ?>
+			<div>
+				<p><?= $error ?></p>
+			</div>
+		<?php endforeach; ?>
+	<?php endif; ?>
   </body>
 </html>
