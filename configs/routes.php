@@ -4,35 +4,35 @@ return [
 		'method' => 'GET',
 		'action' => '',
 		'resource' => '',
-		'controller' => 'page',
-		'callback' => '\controllers\Page\dashboard'
+		'controller' => 'Page',
+		'callback' => 'dashboard'
 	],
 	[
 		'method' => 'POST',
 		'action' => 'store',
 		'resource' => 'match',
-		'controller' => 'match',
-		'callback' => '\controllers\Match\store'
+		'controller' => 'MatchClass',
+		'callback' => 'store'
 	],
 	[
 		'method' => 'POST',
 		'action' => 'store',
 		'resource' => 'team',
-		'controller' => 'team',
-		'callback' => '\controllers\Team\store'
+		'controller' => 'Team',
+		'callback' => 'store'
 	],
 	[
 		'method' => 'GET',
 		'action' => 'create',
 		'resource' => 'team',
-		'controller' => 'team',
-		'callback' => '\controllers\Team\create'
+		'controller' => 'Team',
+		'callback' => 'create'
 	],
 	[
 		'method' => 'GET',
 		'action' => 'create',
 		'resource' => 'match',
-		'controller' => 'Match',
-		'callback' => '\controllers\Match\create'
+		'controller' => 'MatchClass',
+		'callback' => 'create'
 	]
 ];

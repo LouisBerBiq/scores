@@ -10,9 +10,11 @@ if (!$route) {
 	header('location: ./index.php');
 	exit();
 }
-require('./controllers/' . $route['controller'] . '.php');
 
-$data = call_user_func($route['callback'], $connection);
+$controllerName = 'Controllers\\' . $route['controller'];
+$controller = new $controllerName();
+
+$data = call_user_func([$controller, $route['callback']], $connection);
 extract($data, EXTR_OVERWRITE);
 include($view);
 
