@@ -9,5 +9,11 @@
             "name": "LouisBerBiq",
             "email": "louis.beriotbiquet@student.hepl.be"
         }
-    ]
+    ],
+    "autoload": {
+        "psr-4": {
+            "Models\\": "models/",
+            "Controllers\\": "controllers/"
+        }
+    }
 }
