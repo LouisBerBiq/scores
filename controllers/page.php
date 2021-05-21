@@ -1,8 +1,8 @@
 <?php
 namespace Controllers\Page;
 
-require('./models/match.php');
-require('./models/team.php');
+use Models\MatchClass;
+use Models\Team;
 
 use function Models\Match\allWithTeamsGrouped as allWithTeamsGrouped;
 use function Models\Match\allWithTeams as allMatchesWithTeams;
