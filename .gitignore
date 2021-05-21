@@ -3,6 +3,7 @@
 tools/
 test.php
 vue.html
+notes.md
 
 /data/mysql/*
 !/data/mysql/scores
