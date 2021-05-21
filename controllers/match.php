@@ -5,6 +5,7 @@ require('./models/match.php');
 require('./models/team.php');
 
 use function Models\Team\findByName as findTeamByName;
+use function Models\Team\all as allTeams;
 use function Models\Match\saveToDb as saveMatchToDb;
 
 function store(\PDO $connection)
@@ -26,8 +27,9 @@ function store(\PDO $connection)
 	exit();
 }
 
-function create()
+function create(\PDO $connection): array
 {
+	$teams = allTeams($connection);
 	$view = './views/match/view.php';
-	return compact('view');
+	return compact('view', 'teams');
 }
