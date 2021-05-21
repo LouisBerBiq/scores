@@ -16,6 +16,9 @@ $data = call_user_func($route['callback'], $connection);
 extract($data, EXTR_OVERWRITE);
 include($view);
 
+$_SESSION['errors'] = [];
+$_SESSION['old'] = [];
+
 /*
 * A REQUEST IS:
 * - a method
