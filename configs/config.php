@@ -1,11 +1,8 @@
 <?php
-require('./configs/dbconnection.php');
-
 use Carbon\Carbon;
 
 define('SERVER_NAME', 'localhost');
 define('MATCH_DATE', Carbon::now('Europe/Brussels')->locale('fr_BE')->isoFormat('dddd MMMM YYYY'));
 
-$connection = getConnection();
 $boardData = [];
 $view = './views/defaultView.php';

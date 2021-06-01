@@ -3,7 +3,7 @@ namespace Controllers;
 
 class Team
 {
-	function store(\PDO $connection)
+	function store()
 	{
 		$teamModel = new \Models\Team();
 	
@@ -24,7 +24,7 @@ class Team
 			$name = $_POST['team-name'];
 			$slug = $_POST['team-slug'];
 			$team = compact('name', 'slug');
-			$teamModel->saveToDb($connection, $team);
+			$teamModel->saveToDb($team);
 			header('location: ./index.php');
 			exit();
 		}

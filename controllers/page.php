@@ -6,12 +6,12 @@ use Models\Team;
 
 class Page
 {
-	function dashboard(\PDO $connection)
+	function dashboard()
 	{
 		$matchModel = new MatchClass();
 		$teamModel = new Team();
-		$matches = $matchModel->allWithTeamsGrouped($matchModel->allWithTeams($connection));
-		$teams =  $teamModel->all($connection);
+		$matches = $matchModel->allWithTeamsGrouped($matchModel->allWithTeams());
+		$teams =  $teamModel->all();
 		$standing = [];
 		$view = './views/dashboard.php';
 	
