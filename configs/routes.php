@@ -4,8 +4,8 @@ return [
 		'method' => 'GET',
 		'action' => '',
 		'resource' => '',
-		'controller' => 'Page',
-		'callback' => 'dashboard'
+		'controller' => 'Dashboard',
+		'callback' => 'index'
 	],
 	[
 		'method' => 'POST',

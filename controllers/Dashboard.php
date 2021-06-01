@@ -4,9 +4,9 @@ namespace Controllers;
 use Models\MatchClass;
 use Models\Team;
 
-class Page
+class Dashboard
 {
-	function dashboard()
+	function index()
 	{
 		$matchModel = new MatchClass();
 		$teamModel = new Team();
