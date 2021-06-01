@@ -26,6 +26,13 @@ $_SESSION['old'] = [];
 * - a method
 * - an action (append, delete)
 * - resources (team, match)
+*
 * manually writing validation branches is "deprecated" in this day and ages,
 * frameworks like Laravel and such leverage this important process.
+*
+* A IS:
+* - identification
+* - authentification
+* - authorization
+*
 */

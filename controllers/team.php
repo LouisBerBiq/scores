@@ -11,7 +11,6 @@ class Team
 		$_SESSION['errors'] = [];
 		$_SESSION['old'] = [];
 	
-		// I don't know if this is some stupid recent changed but '' is not considered empty anymore and it's annoying
 		if (empty($_POST['team-name']) || trim(isset($_POST['team-name'])) === '') {
 			$_SESSION['errors']['team-name'] = 'You have not provided a team name';
 		}
