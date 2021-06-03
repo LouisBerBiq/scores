@@ -34,5 +34,19 @@ return [
 		'resource' => 'match',
 		'controller' => 'MatchClass',
 		'callback' => 'create'
-	]
+	],
+	[
+		'method' => 'GET',
+		'action' => 'show',
+		'resource' => 'login',
+		'controller' => 'Login',
+		'callback' => 'create'
+	],
+	[
+		'method' => 'POST',
+		'action' => 'check',
+		'resource' => 'login',
+		'controller' => 'Login',
+		'callback' => 'check'
+	],
 ];
