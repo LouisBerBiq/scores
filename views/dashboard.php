@@ -8,7 +8,11 @@
 
 <body>
 	<?php include('./views/parts/banner.php') ?>
-	<?php include('./views/parts/navigation.php') ?>
+	<?php if(isset($_SESSION['user'])): ?>
+		<?php include('./views/parts/admin-navigation.php') ?>
+	<?php else: ?>
+		<?php include('./views/parts/standard-navigation.php') ?>
+	<?php endif; ?>
 	<?php if($standing): ?>
 	<section>
 		<h2>Standings</h2>
