@@ -25,12 +25,6 @@
 		<input type="hidden" name="resource" value="team"></input>
 		<input type="submit" value="Register a new team"></input>
 	</form>
-	<?php if($_SESSION['errors']): ?>
-		<?php foreach($_SESSION['errors'] as $error): ?>
-			<div>
-				<p><?= $error ?></p>
-			</div>
-		<?php endforeach; ?>
-	<?php endif; ?>
+	<?php include('./views/parts/errors.php') ?>
   </body>
 </html>
