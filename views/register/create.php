@@ -15,7 +15,7 @@
 	<form action="index.php" method="POST">
 	<div>
 		<label for="email">your e-mail</label>
-		<input type="text" id="email" email="user-email" value="<?= !empty($_SESSION['old'])?$_SESSION['old']['user-email']:'' ?>"></input>
+		<input type="text" id="email" name="user-email" value="<?= !empty($_SESSION['old'])?$_SESSION['old']['user-email']:'' ?>"></input>
 	</div>
 	<div>
 		<label for="name">your username</label>
@@ -27,7 +27,7 @@
 	</div>
 	<div>
 		<label for="comfirm_password">comfirm password</label>
-		<input type="password" id="comfirm_password" name="user-comfirm_password" value="<?= !empty($_SESSION['old'])?$_SESSION['old']['user-comfirm_password']:'' ?>"></input>
+		<input type="password" id="comfirm_password" name="user-comfirm_password" value=""></input>
 	</div>
 		<input type="hidden" name="action" value="store"></input>
 		<input type="hidden" name="resource" value="user"></input>

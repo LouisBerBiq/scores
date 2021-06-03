@@ -57,10 +57,17 @@ return [
 		'callback' => 'create'
 	],
 	[
-		'method' => 'GET',
+		'method' => 'POST',
+		'action' => 'destroy',
+		'resource' => 'login',
+		'controller' => 'Login',
+		'callback' => 'delete'
+	],
+	[
+		'method' => 'POST',
 		'action' => 'store',
 		'resource' => 'user',
 		'controller' => 'Register',
-		'callback' => 'create'
+		'callback' => 'store'
 	],
 ];
