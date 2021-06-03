@@ -49,4 +49,18 @@ return [
 		'controller' => 'Login',
 		'callback' => 'check'
 	],
+	[
+		'method' => 'GET',
+		'action' => 'show',
+		'resource' => 'register',
+		'controller' => 'Register',
+		'callback' => 'create'
+	],
+	[
+		'method' => 'GET',
+		'action' => 'store',
+		'resource' => 'user',
+		'controller' => 'Register',
+		'callback' => 'create'
+	],
 ];
