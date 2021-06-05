@@ -9,7 +9,7 @@ class Register
 		return compact('view');
 	}
 	public function store()
-	{	
+	{
 		$userModel = new \Models\User();
 		
 		$email = $_POST['user-email'];
@@ -21,7 +21,7 @@ class Register
 		if (!$_SESSION['errors']) {
 			$password = password_hash($password, PASSWORD_BCRYPT);
 			$user = compact('email', 'name', 'password');
-			$userModel->saveToDb($user);
+			$userModel->saveToDb('users', $user);
 			header('location: ./index.php');
 			exit();
 		} else {

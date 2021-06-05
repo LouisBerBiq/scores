@@ -11,7 +11,7 @@ class Dashboard
 		$matchModel = new MatchClass();
 		$teamModel = new Team();
 		$matches = $matchModel->allWithTeamsGrouped($matchModel->allWithTeams());
-		$teams =  $teamModel->all();
+		$teams =  $teamModel->all('teams');
 		$standing = [];
 		$view = './views/dashboard.php';
 	

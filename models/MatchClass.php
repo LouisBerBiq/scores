@@ -3,21 +3,6 @@ namespace Models;
 
 class MatchClass extends Model
 {
-	function all(): array
-	{
-		$matchRequest = 'SELECT * FROM `matches` ORDER BY date ASC';
-		$pdoSt = $this->connection->query($matchRequest);
-		return $pdoSt->fetchAll();
-	}
-	
-	function find(string $id): \stdClass
-	{
-		$matchRequest = 'SELECT * FROM `matches` WHERE id = :id';
-		$pdoSt = $this->connection->prepare($matchRequest);
-		$pdoSt->execute([':id' => $id]);
-		return $pdoSt->fetch();
-	}
-	
 	function allWithTeams(): array
 	{
 		$matchesInfosRequest = 'SELECT * FROM matches JOIN events e on matches.id = e.match_id JOIN teams t on e.team_id = t.id ORDER BY matches.id, is_home_team DESC';
@@ -45,27 +30,27 @@ class MatchClass extends Model
 		return $matchesWithTeams;
 	}
 	
-	function saveToDb(array $match)
-	{
-		$matchRequestToInsert = 'INSERT INTO matches(`date`, `slug`) VALUES (:date, :slug)';
-		$pdoSt = $this->connection->prepare($matchRequestToInsert);
-		$pdoSt->execute([':date' => $match['date'], ':slug' => '']);
+	// function saveToDb(array $match)
+	// {
+	// 	$matchRequestToInsert = 'INSERT INTO matches(`date`, `slug`) VALUES (:date, :slug)';
+	// 	$pdoSt = $this->connection->prepare($matchRequestToInsert);
+	// 	$pdoSt->execute([':date' => $match['date'], ':slug' => '']);
 	
-		$id = $this->connection->lastInsertId();
-		$eventRequestToInsert = 'INSERT INTO events(`match_id`, `team_id`, `goals`, `is_home_team`) VALUES (:match_id, :team_id, :goals, :is_home_team)';
-		$pdoSt = $this->connection->prepare($eventRequestToInsert);
-		$pdoSt->execute([
-			':match_id' => $id,
-			':team_id' => $match['home-team'],
-			':goals' => $match['home-team-goals'],
-			':is_home_team' => 1
-		]);
-		$pdoSt = $this->connection->prepare($eventRequestToInsert);
-		$pdoSt->execute([
-			':match_id' => $id,
-			':team_id' => $match['away-team'],
-			':goals' => $match['away-team-goals'],
-			':is_home_team' => 0
-		]);
-	}
+	// 	$id = $this->connection->lastInsertId();
+	// 	$eventRequestToInsert = 'INSERT INTO events(`match_id`, `team_id`, `goals`, `is_home_team`) VALUES (:match_id, :team_id, :goals, :is_home_team)';
+	// 	$pdoSt = $this->connection->prepare($eventRequestToInsert);
+	// 	$pdoSt->execute([
+	// 		':match_id' => $id,
+	// 		':team_id' => $match['home-team'],
+	// 		':goals' => $match['home-team-goals'],
+	// 		':is_home_team' => 1
+	// 	]);
+	// 	$pdoSt = $this->connection->prepare($eventRequestToInsert);
+	// 	$pdoSt->execute([
+	// 		':match_id' => $id,
+	// 		':team_id' => $match['away-team'],
+	// 		':goals' => $match['away-team-goals'],
+	// 		':is_home_team' => 0
+	// 	]);
+	// }
 }

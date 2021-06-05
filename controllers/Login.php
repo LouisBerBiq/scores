@@ -18,7 +18,7 @@ class Login
 		$this->filterEmail($email);
 
 		if (!$_SESSION['errors']) {
-			$user = $userModel->findByEmail($email);
+			$user = $userModel->find('users', 'email', $email);
 			if (password_verify($password, $user->password)) {
 				$_SESSION['user'] = $user;
 				header('location: ./index.php');
