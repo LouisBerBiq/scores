@@ -1,6 +1,8 @@
 <?php
 namespace Models;
 
+use Carbon\Carbon;
+
 class MatchClass extends Model
 {
 	function allWithTeams(): array
@@ -17,7 +19,8 @@ class MatchClass extends Model
 		foreach ($allWithTeams as $match) {
 			if ($match->is_home_team) {
 				$mm = new \stdClass();
-				$mm->match_date = $match->date;
+				$dd = Carbon::createFromFormat('Y-m-d H:i:s', $match->date);
+				$mm->match_date = $dd;
 				$mm->home_team = $match->name;
 				$mm->home_team_goals = $match->goals;
 			} else {

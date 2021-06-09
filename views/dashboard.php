@@ -68,7 +68,7 @@
 			<tbody>
 				<?php foreach ($matches as $match) : ?>
 					<tr>
-						<td><?= (new DateTime($match->match_date, new DateTimeZone('Europe/Brussels')))->format('F jS, Y') ?></td>
+						<td>Le <?= $match->match_date->locale('fr-be')->isoFormat(' dddd D MMMM YYYY') ?></td>
 						<td><?= $match->home_team ?></td>
 						<td><?= $match->home_team_goals ?></td>
 						<td><?= $match->away_team_goals ?></td>
