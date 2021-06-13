@@ -33,27 +33,28 @@ class MatchClass extends Model
 		return $matchesWithTeams;
 	}
 	
-	// function saveToDb(array $match)
-	// {
-	// 	$matchRequestToInsert = 'INSERT INTO matches(`date`, `slug`) VALUES (:date, :slug)';
-	// 	$pdoSt = $this->connection->prepare($matchRequestToInsert);
-	// 	$pdoSt->execute([':date' => $match['date'], ':slug' => '']);
-	
-	// 	$id = $this->connection->lastInsertId();
-	// 	$eventRequestToInsert = 'INSERT INTO events(`match_id`, `team_id`, `goals`, `is_home_team`) VALUES (:match_id, :team_id, :goals, :is_home_team)';
-	// 	$pdoSt = $this->connection->prepare($eventRequestToInsert);
-	// 	$pdoSt->execute([
-	// 		':match_id' => $id,
-	// 		':team_id' => $match['home-team'],
-	// 		':goals' => $match['home-team-goals'],
-	// 		':is_home_team' => 1
-	// 	]);
-	// 	$pdoSt = $this->connection->prepare($eventRequestToInsert);
-	// 	$pdoSt->execute([
-	// 		':match_id' => $id,
-	// 		':team_id' => $match['away-team'],
-	// 		':goals' => $match['away-team-goals'],
-	// 		':is_home_team' => 0
-	// 	]);
-	// }
+	function saveToDb(string $table, array $values)
+	{
+		$matchRequestToInsert = 'INSERT INTO matches(`date`, `slug`) VALUES (:date, :slug)';
+		$pdoSt = $this->connection->prepare($matchRequestToInsert);
+		$pdoSt->execute([':date' => $values['date'], ':slug' => '']);
+		
+		// for some reason, I get an Integrity constraint violation if the number of goals is more than 1 digit long
+		$id = $this->connection->lastInsertId();
+		$eventRequestToInsert = 'INSERT INTO events(`match_id`, `team_id`, `goals`, `is_home_team`) VALUES (:match_id, :team_id, :goals, :is_home_team)';
+		$pdoSt = $this->connection->prepare($eventRequestToInsert);
+		$pdoSt->execute([
+			':match_id' => $id,
+			':team_id' => $values['home-team'],
+			':goals' => $values['home-team-goals'],
+			':is_home_team' => 1
+		]);
+		$pdoSt = $this->connection->prepare($eventRequestToInsert);
+		$pdoSt->execute([
+			':match_id' => $id,
+			':team_id' => $values['away-team'],
+			':goals' => $values['away-team-goals'],
+			':is_home_team' => 0
+		]);
+	}
 }

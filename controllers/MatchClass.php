@@ -21,7 +21,7 @@ class MatchClass
 			'away-team-goals' => $awayTeam->id,
 			'away-team' => $awayTeamGoals
 		];
-		$matchModel->saveToDb($match);
+		$matchModel->saveToDb('dummy', $match);
 		header('location: ./index.php');
 		exit();
 	}
