@@ -12,7 +12,8 @@
   <body>
 	<?php include('./views/parts/banner.php') ?>
 	<h1>Create a team</h1>
-	<form action="index.php" method="POST">
+	<form action="index.php" method="POST" enctype="multipart/form-data">
+	<input type="hidden" name="MAX_FILE_SIZe" value="8000000"></input>
 	<div>
 		<label for="name">New team name</label>
 		<input type="text" id="name" name="team-name" value="<?= !empty($_SESSION['old'])?$_SESSION['old']['team-name']:'' ?>"></input>
@@ -20,6 +21,10 @@
 	<div>
 		<label for="slug">New team slug (3 chars)</label>
 		<input type="text" id="slug" name="team-slug" value="<?= !empty($_SESSION['old'])?$_SESSION['old']['team-slug']:''?>"></input>
+	</div>
+	<div>
+		<label for="logo">New team logo (preferably 512x512)</label>
+		<input type="file" id="logo" name="team-logo" value="<?= !empty($_SESSION['old'])?$_SESSION['old']['team-slug']:''?>"></input>
 	</div>
 		<input type="hidden" name="action" value="store"></input>
 		<input type="hidden" name="resource" value="team"></input>
