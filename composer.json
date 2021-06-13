@@ -2,7 +2,8 @@
     "name": "louis/scores",
     "type": "project",
     "require": {
-        "nesbot/carbon": "^2.48"
+        "nesbot/carbon": "^2.48",
+        "intervention/image": "^2.5"
     },
     "authors": [
         {
